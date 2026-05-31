@@ -4,6 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GMF — RLS Pierre-Boucher · Cliniques en recrutement</title>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0f2240">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cliniques PB">
+<link rel="apple-touch-icon" href="./apple-touch-icon-180.png">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root {
@@ -836,4 +843,13 @@ document.getElementById('btn-save-notes').addEventListener('click', () => saveNo
 renderSidebar();
 </script>
 
+
+<script>
+// Enregistrement du service worker (mode hors-ligne + installable)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
 </body></html>
